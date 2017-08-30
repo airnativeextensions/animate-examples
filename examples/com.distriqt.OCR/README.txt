@@ -5,7 +5,7 @@ Sample includes UI and functionality to support choosing an image from the Camer
 
 Folder project structure:
 
-ANE (air native extension)
+ANE (air native extensions) - please use latest ANE's for OCR and Core
 src (project folder)
 - tessdata (OCR trained data files)
 - includes (action script include files to separate code by function)
