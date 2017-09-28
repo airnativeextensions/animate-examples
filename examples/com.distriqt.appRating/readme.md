@@ -6,6 +6,7 @@ Sample includes UI and functionality to support rating the application for the A
 Folder project structure:
 
 ANE (air native extensions)
+iosSDK (sdk to use when testing the review controller)
 src (project folder)
 - includes (actionscript include files to separate code by function)
 - appRating.fla (UI and core project code)
