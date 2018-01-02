@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<application xmlns="http://ns.adobe.com/air/application/27.0">
+    <id>com.maritz.rewardsExpress</id>
+    <versionNumber>1.0</versionNumber>
+    <filename>CameraRoll</filename>
+    <description></description>
+    <!-- To localize the description, use the following format for the description element.
+	<description>
+		<text xml:lang="en">English App description goes here</text>
+		<text xml:lang="fr">French App description goes here</text>
+		<text xml:lang="ja">Japanese App description goes here</text>
+	</description>
+	-->
+    <name>CameraRoll</name>
+    <!-- To localize the name, use the following format for the name element.
+	<name>
+		<text xml:lang="en">English App name goes here</text>
+		<text xml:lang="fr">French App name goes here</text>
+		<text xml:lang="ja">Japanese App name goes here</text>
+	</name>
+	-->
+    <copyright></copyright>
+    <initialWindow>
+        <content>cameraRoll.swf</content>
+        <systemChrome>standard</systemChrome>
+        <transparent>false</transparent>
+        <visible>true</visible>
+        <fullScreen>false</fullScreen>
+        <autoOrients>false</autoOrients>
+        <aspectRatio>portrait</aspectRatio>
+        <renderMode>gpu</renderMode>
+    </initialWindow>
+    <customUpdateUI>false</customUpdateUI>
+    <allowBrowserInvocation>false</allowBrowserInvocation>
+    <icon></icon>
+    <iPhone>
+        <requestedDisplayResolution>high</requestedDisplayResolution>
+        <InfoAdditions><![CDATA[
+    <key>UIDeviceFamily</key>
+    <array><string>1</string><string>2</string></array>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>This app would like to access your photos</string>
+]]></InfoAdditions>
+    </iPhone>
+    <android>
+        <manifestAdditions><![CDATA[
+  			<manifest android:installLocation="auto">
+  				<uses-permission android:name="android.permission.INTERNET"/>
+  				<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+  				<uses-permission android:name="com.google.android.apps.photos.permission.GOOGLE_PHOTOS"/>
+
+  				<application>
+  					<activity android:name="com.distriqt.extension.camerarollextended.activities.BrowseForAssetActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:configChanges="orientation|screenSize" />
+  					<activity android:name="com.distriqt.extension.camerarollextended.activities.MultiImagePickerActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:configChanges="orientation|screenSize" />
+  					<activity android:name="com.distriqt.extension.camerarollextended.activities.SelectorActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:configChanges="orientation|screenSize" />
+
+  					<activity android:name="com.distriqt.extension.camerarollextended.permissions.AuthorisationActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+  				</application>
+
+  			</manifest>
+  		]]></manifestAdditions>
+    </android>
+    <extensions>
+        <extensionID>com.distriqt.CameraRollExtended</extensionID>
+        <extensionID>com.distriqt.Core</extensionID>
+        <extensionID>com.distriqt.androidsupport.V4</extensionID>
+    </extensions>
+</application>
