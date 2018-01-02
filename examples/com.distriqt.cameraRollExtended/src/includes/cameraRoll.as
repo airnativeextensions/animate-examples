@@ -29,8 +29,6 @@ try {
 	CameraRollExtended.init("APP KEY HERE");
 	if (CameraRollExtended.isSupported) {
 		trace("CameraRollExtended Version:     " + CameraRollExtended.service.version);
-		trace("CameraRollExtended Auth Status: " + CameraRollExtended.service.authorisationStatus());
-
 		CameraRollExtended.service.addEventListener(AuthorisationEvent.CHANGED, authorisationStatus_changedHandler);
 
 		CameraRollExtended.service.addEventListener(CameraRollExtendedEvent.CANCEL, cameraRoll_cancelHandler);
@@ -52,6 +50,7 @@ function checkAndRequestAuthorisation(): void {
 		case AuthorisationStatus.NOT_DETERMINED:
 			// REQUEST ACCESS: This will display the permission dialog
 			CameraRollExtended.service.requestAccess();
+			trace("CameraRollExtended Auth Status: " + CameraRollExtended.service.authorisationStatus());
 			return;
 
 		case AuthorisationStatus.DENIED:
@@ -61,7 +60,7 @@ function checkAndRequestAuthorisation(): void {
 			return;
 
 		case AuthorisationStatus.AUTHORISED:
-			// AUTHORISED: Camera will be available
+			// AUTHORISED: CameraRoll will be available
 			break;
 	}
 }
@@ -71,6 +70,8 @@ function authorisationStatus_changedHandler(event: AuthorisationEvent): void {
 }
 
 
+
+
 function openCameraRoll(): void {
 	trace("Browse");
 	var options: CameraRollExtendedBrowseOptions = new CameraRollExtendedBrowseOptions();
@@ -78,11 +79,21 @@ function openCameraRoll(): void {
 	//options.minimumCount = 2;
 	options.maximumCount = 1;
 	options.type = Asset.IMAGE;
-	options.autoCloseOnCountReached = true;
-	options.useNativePicker = false;
+
+	if (appType == "iOS") {
+		options.useNativePicker = false;
+		options.autoCloseOnCountReached = true;
+	}
+
+	if (appType == "android") {
+		trace("use native picker");
+		options.useNativePicker = true;
+		options.autoCloseOnCountReached = true;
+	}
 
 	CameraRollExtended.service.browseForAsset(options);
 }
+
 
 
 function cameraRoll_cancelHandler(event: CameraRollExtendedEvent): void {
@@ -100,9 +111,8 @@ function cameraRoll_selectHandler(event: CameraRollExtendedEvent): void {
 		CameraRollExtended.service.getFileForAssetAsync(asset);
 
 		// Load the image asset // AssetRepresentation.FULL_RESOLUTION // ASPECT_RATIO_THUMBNAIL // THUMBNAIL
-		if (asset.type == Asset.IMAGE)
-		{
-		CameraRollExtended.service.loadAssetByURL( asset.url, AssetRepresentation.THUMBNAIL );
+		if (asset.type == Asset.IMAGE) {
+			CameraRollExtended.service.loadAssetByURL(asset.url, AssetRepresentation.THUMBNAIL);
 		}
 	}
 }
