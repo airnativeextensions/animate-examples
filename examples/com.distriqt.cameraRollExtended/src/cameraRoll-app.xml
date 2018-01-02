@@ -5,20 +5,20 @@
     <filename>CameraRoll</filename>
     <description></description>
     <!-- To localize the description, use the following format for the description element.
-	<description>
-		<text xml:lang="en">English App description goes here</text>
-		<text xml:lang="fr">French App description goes here</text>
-		<text xml:lang="ja">Japanese App description goes here</text>
-	</description>
-	-->
+        <description>
+                <text xml:lang="en">English App description goes here</text>
+                <text xml:lang="fr">French App description goes here</text>
+                <text xml:lang="ja">Japanese App description goes here</text>
+        </description>
+        -->
     <name>CameraRoll</name>
     <!-- To localize the name, use the following format for the name element.
-	<name>
-		<text xml:lang="en">English App name goes here</text>
-		<text xml:lang="fr">French App name goes here</text>
-		<text xml:lang="ja">Japanese App name goes here</text>
-	</name>
-	-->
+        <name>
+                <text xml:lang="en">English App name goes here</text>
+                <text xml:lang="fr">French App name goes here</text>
+                <text xml:lang="ja">Japanese App name goes here</text>
+        </name>
+        -->
     <copyright></copyright>
     <initialWindow>
         <content>cameraRoll.swf</content>
@@ -34,13 +34,20 @@
     <allowBrowserInvocation>false</allowBrowserInvocation>
     <icon></icon>
     <iPhone>
-        <requestedDisplayResolution>high</requestedDisplayResolution>
         <InfoAdditions><![CDATA[
-    <key>UIDeviceFamily</key>
-    <array><string>1</string><string>2</string></array>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>This app would like to access your photos</string>
-]]></InfoAdditions>
+  			<key>UIDeviceFamily</key>
+  			<array>
+  				<string>1</string>
+  				<string>2</string>
+  			</array>
+
+  			<key>NSPhotoLibraryUsageDescription</key>
+  			<string>This app would like to access your photos</string>
+
+  		]]></InfoAdditions>
+        <requestedDisplayResolution>high</requestedDisplayResolution>
+        <Entitlements><![CDATA[
+  			]]></Entitlements>
     </iPhone>
     <android>
         <manifestAdditions><![CDATA[
@@ -60,6 +67,7 @@
   			</manifest>
   		]]></manifestAdditions>
     </android>
+    <versionLabel></versionLabel>
     <extensions>
         <extensionID>com.distriqt.CameraRollExtended</extensionID>
         <extensionID>com.distriqt.Core</extensionID>
