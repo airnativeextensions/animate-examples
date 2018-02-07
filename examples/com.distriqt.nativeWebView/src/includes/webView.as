@@ -93,7 +93,7 @@ function openWebView(): void {
 	//options.disableLongPressGestures = true;
 	
 	//LOAD_NO_CACHE, LOAD_DEFAULT
-	options.cachePolicy = CachePolicy.LOAD_NO_CACHE;
+	//options.cachePolicy = CachePolicy.LOAD_NO_CACHE;
 	//options.useWebKitIfAvailable = false;
 
 
@@ -148,7 +148,7 @@ function loadFromAString(): void {
 	//	Load from a string
 	trace("Load from a string");
 
-	if (NativeWebView.service.version.indexOf("Android") > 0) {
+	if (appType == "android") {
 		// Android: Copy the application packaged files to an accessible location			
 		var packagedWWWRoot: File = File.applicationDirectory.resolvePath("www");
 		var destination: File = File.applicationStorageDirectory.resolvePath("www");
@@ -189,7 +189,7 @@ function loadPackagedFile(): void {
 	trace("Load packaged file");
 
 	var file: File;
-	if (NativeWebView.service.version.indexOf("Android") > 0) {
+	if (appType == "android") {
 		// Android: Copy the application packaged files to an accessible location			
 		var packagedWWWRoot: File = File.applicationDirectory.resolvePath("www");
 		var destination: File = File.applicationStorageDirectory.resolvePath("www");
