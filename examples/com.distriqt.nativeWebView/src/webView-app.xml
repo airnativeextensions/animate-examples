@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<application xmlns="http://ns.adobe.com/air/application/27.0">
+    <id>com.maritz.demo</id>
+    <versionNumber>1.0</versionNumber>
+    <filename>WebView</filename>
+    <description></description>
+    <!-- To localize the description, use the following format for the description element.
+	<description>
+		<text xml:lang="en">English App description goes here</text>
+		<text xml:lang="fr">French App description goes here</text>
+		<text xml:lang="ja">Japanese App description goes here</text>
+	</description>
+	-->
+    <name>WebView</name>
+    <!-- To localize the name, use the following format for the name element.
+	<name>
+		<text xml:lang="en">English App name goes here</text>
+		<text xml:lang="fr">French App name goes here</text>
+		<text xml:lang="ja">Japanese App name goes here</text>
+	</name>
+	-->
+    <copyright></copyright>
+    <initialWindow>
+        <content>webView.swf</content>
+        <systemChrome>standard</systemChrome>
+        <transparent>false</transparent>
+        <visible>true</visible>
+        <fullScreen>false</fullScreen>
+        <autoOrients>true</autoOrients>
+        <aspectRatio>portrait</aspectRatio>
+        <renderMode>gpu</renderMode>
+    </initialWindow>
+    <customUpdateUI>false</customUpdateUI>
+    <allowBrowserInvocation>false</allowBrowserInvocation>
+    <icon></icon>
+    <iPhone>
+        <InfoAdditions><![CDATA[
+          <key>MinimumOSVersion</key>
+      <string>8.0</string>
+        <key>NSAppTransportSecurity</key>
+        <dict>
+            <key>NSAllowsArbitraryLoads</key>
+            <true/>
+        </dict>
+        <key>ITSAppUsesNonExemptEncryption</key>
+            <false/>
+    <key>UIRequiresPersistentWiFi</key>
+    <string>YES</string>
+        <key>UIDeviceFamily</key>
+    <array><string>1</string><string>2</string></array>
+    ]]></InfoAdditions>
+        <requestedDisplayResolution>high</requestedDisplayResolution>
+    </iPhone>
+    <android>
+        <manifestAdditions><![CDATA[
+          <manifest android:installLocation="auto">
+  	<uses-permission android:name="android.permission.INTERNET"/>
+
+  	<!-- android:hardwareAccelerated is highly recommended for video playback -->
+  	<!-- android:windowSoftInputMode is used to push the content up when an input appears below the keyboard -->
+  	<application
+  		android:hardwareAccelerated="true"
+  		android:windowSoftInputMode="adjustResize">
+
+  		<activity
+  			android:name="com.distriqt.extension.nativewebview.activities.BrowseActivity"
+  			android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+  	</application>
+  </manifest>
+  		]]></manifestAdditions>
+    </android>
+    <supportedLanguages>en</supportedLanguages>
+    <extensions>
+        <extensionID>com.distriqt.NativeWebView</extensionID>
+        <extensionID>com.distriqt.Core</extensionID>
+        <extensionID>com.distriqt.androidsupport.CustomTabs</extensionID>
+        <extensionID>com.distriqt.androidsupport.V4</extensionID>
+    </extensions>
+</application>

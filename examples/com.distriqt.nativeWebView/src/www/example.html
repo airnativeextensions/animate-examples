@@ -1,0 +1,42 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<script type="text/javascript" src="js/airbridge.js" ></script>
+	<script>
+		
+		"use strict";
+		function sendToAIR()
+		{
+			AirBridge.message( "content-for-air" );
+		}
+
+	</script>
+
+</head>
+
+<body>
+
+	<h1>NativeWebView Example</h1>
+		
+	<p>
+		<button type="button" onClick="sendToAIR()" >Example Call</button>	
+	</p>
+	
+	<p>
+		<a href="example2.html"><button type="button">Link to 2</button></a>
+	</p>
+	
+	<p>
+		<a href="itms-apps://itunes.apple.com/app/id552872162"><button type="button">App store</button></a>
+	</p>
+	
+	<p>
+		<a href="https://itunes.apple.com/app/id552872162"><button type="button">App store link</button></a>
+	</p>
+	
+	
+</body>
+
+</html>
