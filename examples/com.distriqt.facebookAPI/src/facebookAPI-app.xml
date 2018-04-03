@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<application xmlns="http://ns.adobe.com/air/application/29.0">
+    <id>com.company.demo</id>
+    <versionNumber>1.0</versionNumber>
+    <filename>facebookAPI</filename>
+    <description></description>
+    <!-- To localize the description, use the following format for the description element.
+	<description>
+		<text xml:lang="en">English App description goes here</text>
+		<text xml:lang="fr">French App description goes here</text>
+		<text xml:lang="ja">Japanese App description goes here</text>
+	</description>
+	-->
+    <name>facebookAPI</name>
+    <!-- To localize the name, use the following format for the name element.
+	<name>
+		<text xml:lang="en">English App name goes here</text>
+		<text xml:lang="fr">French App name goes here</text>
+		<text xml:lang="ja">Japanese App name goes here</text>
+	</name>
+	-->
+    <copyright></copyright>
+    <initialWindow>
+        <content>facebookAPI.swf</content>
+        <systemChrome>standard</systemChrome>
+        <transparent>false</transparent>
+        <visible>true</visible>
+        <fullScreen>false</fullScreen>
+        <autoOrients>false</autoOrients>
+        <aspectRatio>portrait</aspectRatio>
+        <renderMode>gpu</renderMode>
+    </initialWindow>
+    <customUpdateUI>false</customUpdateUI>
+    <allowBrowserInvocation>false</allowBrowserInvocation>
+    <icon></icon>
+    <iPhone>
+        <InfoAdditions><![CDATA[
+          <key>NSPhotoLibraryUsageDescription</key>
+<string>Access to photo library is required to save images and videos.</string>
+<key>NSPhotoLibraryAddUsageDescription</key>
+<string>Access to photo library is required to save images and videos.</string>
+          <key>CFBundleURLTypes</key>
+<array>
+	<dict>
+		<key>CFBundleURLSchemes</key>
+		<array>
+			<!-- Don't remove the 'fb' prefix -->
+			<string>fb[YOUR_FACEBOOK_APP_ID]</string>
+      <!-- Account Kit Addition -->
+			<string>ak[YOUR_FACEBOOK_APP_ID]</string>
+		</array>
+	</dict>
+</array>
+<key>FacebookAppID</key>
+<string>[YOUR_FACEBOOK_APP_ID]</string>
+<key>FacebookDisplayName</key>
+<string>[YOUR_FACEBOOK_APP_NAME]</string>
+<key>AccountKitClientToken</key>
+<string>[YOUR_ACCOUNT_KIT_CLIENT_TOKEN]</string>
+
+<key>NSAppTransportSecurity</key>
+<dict>
+	<key>NSExceptionDomains</key>
+	<dict>
+		<key>facebook.com</key>
+		<dict>
+			<key>NSIncludesSubdomains</key>
+			<true/>
+			<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+			<false/>
+		</dict>
+		<key>fbcdn.net</key>
+		<dict>
+			<key>NSIncludesSubdomains</key>
+			<true/>
+			<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+			<false/>
+		</dict>
+		<key>akamaihd.net</key>
+		<dict>
+			<key>NSIncludesSubdomains</key>
+			<true/>
+			<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+			<false/>
+		</dict>
+	</dict>
+</dict>
+
+<!-- Required to check availability and communicate with other Facebook applications -->
+<key>LSApplicationQueriesSchemes</key>
+<array>
+	<string>fb</string>
+	<string>fbapi</string>
+	<string>fb-messenger-share-api</string>
+	<string>fb-messenger-api</string>
+	<string>fbauth2</string>
+	<string>fbshareextension</string>
+</array>
+
+		]]></InfoAdditions>
+        <requestedDisplayResolution>high</requestedDisplayResolution>
+    </iPhone>
+    <!--  Android Configuration -->
+    <android>
+        <manifestAdditions><![CDATA[
+          <manifest android:installLocation="auto">
+  	<uses-permission android:name="android.permission.INTERNET"/>
+  	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+  	<application android:name="android.support.multidex.MultiDexApplication">
+  		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+
+      <meta-data android:name="com.facebook.accountkit.ApplicationName" android:value="[YOUR_FACEBOOK_APP_NAME]" />
+<meta-data android:name="com.facebook.accountkit.ClientToken" android:value="[YOUR_ACCOUNT_KIT_CLIENT_TOKEN]" />
+
+<activity android:name="com.facebook.accountkit.ui.AccountKitActivity" android:theme="@style/AppLoginTheme" android:launchMode="singleTop" android:windowSoftInputMode="adjustResize" />
+
+<activity android:name="com.facebook.accountkit.ui.AccountKitEmailRedirectActivity" android:exported="true" android:noHistory="true">
+	<intent-filter>
+		<action android:name="android.intent.action.VIEW" />
+		<category android:name="android.intent.category.DEFAULT" />
+		<category android:name="android.intent.category.BROWSABLE" />
+		<data android:scheme="ak[YOUR_FACEBOOK_APP_ID]" />
+	</intent-filter>
+</activity>
+
+  		<intent-filter>
+  			<action android:name="android.intent.action.MAIN" />
+  			<category android:name="android.intent.category.LAUNCHER" />
+  		</intent-filter>
+
+  		<activity android:name="com.facebook.FacebookActivity" android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:label="@string/app_name" />
+  		<activity android:name="com.facebook.CustomTabMainActivity" />
+  		<activity android:name="com.facebook.CustomTabActivity" android:exported="true" >
+  			<intent-filter>
+  				<action android:name="android.intent.action.VIEW" />
+  				<category android:name="android.intent.category.DEFAULT" />
+  				<category android:name="android.intent.category.BROWSABLE" />
+  				<!-- Don't remove the 'fb' prefix -->
+  				<data android:scheme="fb[YOUR_FACEBOOK_APP_ID]" />
+  			</intent-filter>
+  		</activity>
+
+  		<!-- IMPORTANT: Do not remove the backslash and space at the beginning of the following value string. -->
+  		<meta-data android:name="com.facebook.sdk.ApplicationId" android:value="\ [YOUR_FACEBOOK_APP_ID]"/>
+  		<provider android:authorities="com.facebook.app.FacebookContentProvider[YOUR_FACEBOOK_APP_ID]" android:name="com.facebook.FacebookContentProvider" android:exported="true" />
+  	</application>
+
+  </manifest>
+
+
+		]]></manifestAdditions>
+    </android>
+    <supportedLanguages>en</supportedLanguages>
+    <extensions>
+        <extensionID>com.distriqt.Core</extensionID>
+        <extensionID>com.distriqt.androidsupport.AppCompatV7</extensionID>
+        <extensionID>com.distriqt.androidsupport.CardViewV7</extensionID>
+        <extensionID>com.distriqt.androidsupport.CustomTabs</extensionID>
+        <extensionID>com.distriqt.androidsupport.Design</extensionID>
+        <extensionID>com.distriqt.androidsupport.RecyclerViewV7</extensionID>
+        <extensionID>com.distriqt.androidsupport.V4</extensionID>
+        <extensionID>com.distriqt.Bolts</extensionID>
+        <extensionID>com.distriqt.FacebookAPI</extensionID>
+    </extensions>
+</application>
